@@ -38,11 +38,11 @@ This project showcases how to perform linear regression on a dataset containing 
 
 ## Usage
 
-Run the main script to train the model and display the animation:
+Run the train_model script to train the model and display the animation:
 ```bash
 python3 train_model.py
 ```
-Run the main script to train the model and display the animation:
+Run the estimateprice script to estimateprice:
 ```bash
 python3 estimateprice.py
 ```
