@@ -1,34 +1,57 @@
-import csv
-from load_csv import load
-import matplotlib.pyplot as plt 
+import pandas as ps
+from sklearn.utils import check_array
 
 
-def load_data(path:str):
-    with open(path, 'r') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            theta0 = float(row['theta0'])
-            theta1 =  float(row['theta1'])
-        return theta0,theta1
+def load(path: str) -> ps.DataFrame:
+    """
+1.  On read le path pour recuperer les donnee depuis un .csv
+    """
+    try:
+        data_frame = ps.read_csv(path)
+        check_array(data_frame)
+        print("Loading dataset of dimensions", data_frame.shape)
+        return data_frame
+    except (FileNotFoundError, ValueError) as msg:
+        print("Error:", msg)
+        exit(1)
 
 
 def main():
-    mileageinput = float(input())
+    """
+    Fonction principale pour prédire le prix basé sur le kilométrage
+    en prenant les params:
+    data,theta0,theta1,max_price,min_price,min_mileage,max_mileage
+    du theta.csv file
+    """
+
     def estimatedPrice(mileage):
-        return theta0 + (theta1 * mileage)
-    
+        """
+        Calcule le prix estimé en fonction du kilométrage
+        et des paramètres actuels du modèle.
+        """
+        return (theta1 * mileage) + theta0
 
-    data_frame = load("data.csv")
-    mileage = data_frame["km"].values.flatten().tolist()
-    price = data_frame["price"].values.flatten().tolist()
-    
-    plt.plot(mileage,price,"o")
-    plt.show()
+    data = load("theta.csv")
+    theta0 = data["theta0"].values
+    theta1 = data["theta1"].values
+    max_price = data["max_price"].values
+    min_price = data["min_price"].values
+    min_mileage = data["min_mileage"].values
+    max_mileage = data["max_mileage"].values
 
-    data_frame = load('theta.csv')
-    theta0 = data_frame["theta0"].values
-    theta1 = data_frame["theta1"].values
-    print(f"Value estimated = {estimatedPrice(mileageinput)} with : theta0 = {theta0} theta1 = {theta1}")
+    try:
+        mileage_input = float(input("Entrez le kilométrage : "))
+
+        max_min_mileage = max_mileage - min_mileage
+        max_min_price = max_price - min_price
+        current_min = mileage_input - min_mileage
+        mileage_input = current_min / max_min_mileage
+        finale_output = estimatedPrice(mileage_input) * max_min_price
+        print(
+            f"Prix = {finale_output + min_price}")
+    except TypeError as msg:
+        print("Error:", msg)
+        exit(1)
 
 
 if __name__ == "__main__":
