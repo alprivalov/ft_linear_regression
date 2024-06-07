@@ -35,8 +35,10 @@ This project showcases how to perform linear regression on a dataset containing 
     ```
 
 3. Place your dataset `data.csv` in the same directory as the script.
+    ```
     km,price
     x,y
+    ```
 
 ## Usage
 
