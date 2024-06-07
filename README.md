@@ -8,9 +8,6 @@ This project demonstrates a simple linear regression model using gradient descen
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Files](#files)
-- [Functions](#functions)
-- [License](#license)
 
 ## Introduction
 
