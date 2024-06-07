@@ -34,8 +34,8 @@ This project showcases how to perform linear regression on a dataset containing 
     pip install pandas numpy matplotlib scikit-learn
     ```
 
-3. Place your dataset `data.csv` in the same directory as the script.
-    ```
+3. Place your dataset `data.csv` in the same directory as the format:
+    ```csv
     km,price
     x,y
     ```
