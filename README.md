@@ -40,4 +40,9 @@ This project showcases how to perform linear regression on a dataset containing 
 
 Run the main script to train the model and display the animation:
 ```bash
-python main.py
+python3 train_model.py
+```
+Run the main script to train the model and display the animation:
+```bash
+python3 estimateprice.py
+```
