@@ -28,7 +28,7 @@ This project showcases how to perform linear regression on a dataset containing 
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/alprivalov/linear-regression-animation.git
+    git clone https://github.com/alprivalov/ft_linear_regression.git
     cd linear-regression-animation
     ```
 
